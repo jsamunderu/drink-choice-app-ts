@@ -8,7 +8,7 @@ const TABLE_HEAD = [
   "Questions",
 ];
  
-export function ResultTable() {
+export default function Result() {
   return (
       <table className="w-full min-w-max table-auto text-left">
         <thead>
