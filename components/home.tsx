@@ -23,7 +23,7 @@ export default function Home() {
       .catch((error: any) => console.log("Error" + error));
 */
     event.target.reset();
-    router.push("show");
+    router.push("/results");
   };
 
   const handleSearch = (event: any) => {
