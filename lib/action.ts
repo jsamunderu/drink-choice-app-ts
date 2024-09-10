@@ -1,23 +1,24 @@
 'use server';
-import { revalidatePath } from "next/cache";
+
 import { connectToMongoDB } from "./db";
 import DrinkChoiceModel from "@/models/drinksmodel";
 
 export const createDrinkChoiceModel = async (formData: FormData) => {
     await connectToMongoDB();
 
-    const values = Object.fromEntries(formData.entries());
-    try {
+    let doc = [] as any;
+    const obj = Object.fromEntries(formData.entries());
+    Object.entries(obj).forEach(([key, value]) => { doc.push({type: key, value: value})});
 
-        const newDrinkChoiceModel = await DrinkChoiceModel.create({
-            ...values
-        });
+    console.log("#####################", JSON.stringify(doc));
+    try {
+        const newDrinkChoiceModel = await DrinkChoiceModel.create(doc);
 
         newDrinkChoiceModel.save();
 
         return newDrinkChoiceModel.toString();
     } catch (error) {
         console.log(error);
-        return {message: 'error creating todo'};
+        return {message: 'error creating'};
     }
 };

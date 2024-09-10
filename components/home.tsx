@@ -3,22 +3,25 @@ import { data } from "../lib/definitions";
 import { fetchDrinksModel, postDrinksModelAttributes } from "../lib/api";
 import { useEffect, useState } from "react";
 import { createDrinkChoiceModel } from "@/lib/action";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [requestData, setRequestData] = useState();
+  const router = useRouter();
 
   const handleSave = (event: any) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    console.log("1 ###########################");
     createDrinkChoiceModel(formData);
 
     const values = Object.fromEntries(formData.entries());
 
+/*
     postDrinksModelAttributes(values)
-      .then((response: any) => console.log(response))
+      .then((response: any) => router.push("/result"))
       .catch((error: any) => console.log("Error" + error));
+*/
     event.target.reset();
   };
 
