@@ -55,7 +55,7 @@ export default function Result() {
                   <p
                     className="font-normal text-gray-600"
                   >
-                    {elem.attributes.metadata.attributes.reduce((acc, curr)=>`$acc curr`,"")}
+                    {elem.attributes.metadata.attributes.reduce((acc, curr)=>`${acc} ${curr.question}`,"")}
                   </p>
                 </td>
               </tr>
