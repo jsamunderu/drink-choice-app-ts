@@ -24,6 +24,9 @@ const drinksChoiceSchema = new mongoose.Schema<IDrinkChoiceModel>(
       }
     ]
   },
+    {
+      timestamps: true,
+    }
 );
 
 const DrinkChoiceModel: Model<IDrinkChoiceModel> =
