@@ -56,7 +56,7 @@ export default function Result() {
                     name: "",
                   },
                 },
-                ...(data ? data : []),
+                ...(models ? models : []),
               ] as any
             ).map((el: any, idx: number) => {
               return <option key={idx}>{el.attributes.name}</option>;

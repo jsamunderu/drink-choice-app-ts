@@ -17,11 +17,10 @@ export default function Home() {
 
     const values = Object.fromEntries(formData.entries());
 
-/*
     postDrinksModelAttributes(values)
       .then((response: any) => router.push("/result"))
       .catch((error: any) => console.log("Error" + error));
-*/
+
     event.target.reset();
     router.push("/results");
   };
