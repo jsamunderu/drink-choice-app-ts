@@ -8,8 +8,9 @@ export const createDrinkChoiceModel = async (formData: FormData) => {
 
     let attr = [] as any;
     const obj = Object.fromEntries(formData.entries());
+
     Object.entries(obj).forEach(([key, value]) => { attr.push({name: key, value: value})});
-    const doc = { attributes:attr };
+    let doc = { attributes: attr } as any;
 
     try {
         const newDrinkChoiceModel = await DrinkChoiceModel.create(doc);

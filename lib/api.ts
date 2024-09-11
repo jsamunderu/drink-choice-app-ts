@@ -48,6 +48,10 @@ export const fetchDrinksModel = async () => {
 
 export const postDrinksModelAttributes = async (requestData: any) => {
     try {
+      const payload = {
+        type: "scenario",
+        data: requestData,
+      };
       const drinksUrl = `${MODEL_URL}/${DRINKS_MODEL_ID}`;
       const response = await fetch(drinksUrl, {
         method: "POST",
@@ -55,7 +59,7 @@ export const postDrinksModelAttributes = async (requestData: any) => {
           "Authorization": API_KEY,
           "Content-Type": "application/vnd.api+json",
         },
-        body: JSON.stringify(requestData),
+        body: JSON.stringify(payload),
       });
       if (!response.ok) {
           const body = await response.text();
