@@ -13,13 +13,16 @@ export default function Home() {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    createDrinkChoiceModel(formData);
+    const obj = Object.fromEntries(formData.entries());
 
-    const values = Object.fromEntries(formData.entries());
+    let attr = [] as any;
+    Object.entries(obj).forEach(([key, value]) => { attr.push({name: key, value: value})});
+    const doc = { modelId: data[0].id, attributes: attr };
+    createDrinkChoiceModel(doc);
 
-    postDrinksModelAttributes(values)
-      .then((response: any) => router.push("/result"))
-      .catch((error: any) => console.log("Error" + error));
+    //postDrinksModelAttributes(obj)
+      //.then((response: any) => router.push("/result"))
+      //.catch((error: any) => console.log("Error" + error));
 
     event.target.reset();
     router.push("/results");

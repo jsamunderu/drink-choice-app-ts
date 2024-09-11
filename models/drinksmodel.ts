@@ -1,6 +1,7 @@
 import mongoose, { Document, Model } from "mongoose";
 
 export interface IDrinkChoiceModel extends Document{
+  modelId: String,
   attributes: [
     {
       name: String,
@@ -11,6 +12,10 @@ export interface IDrinkChoiceModel extends Document{
 
 const drinksChoiceSchema = new mongoose.Schema<IDrinkChoiceModel>(
   {
+    modelId: {
+      type: String,
+      required: true
+    },
     attributes: [
       {
         name: {
@@ -23,10 +28,7 @@ const drinksChoiceSchema = new mongoose.Schema<IDrinkChoiceModel>(
         },
       }
     ]
-  },
-    {
-      timestamps: true,
-    }
+  }
 );
 
 const DrinkChoiceModel: Model<IDrinkChoiceModel> =
