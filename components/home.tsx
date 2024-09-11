@@ -28,11 +28,10 @@ export default function Home() {
 
   const handleSearch = (event: any) => {
     event.preventDefault();
-    console.log("1 ###########################");
     const formData = new FormData(event.target);
     const searchString = formData.get("searchText");
 
-    fetchDrinksModel(searchString && searchString.toString() || "")
+    fetchDrinksModel()
       .then((response: any) => console.log(response))
       .catch((error: any) => console.log("Error" + error));
     event.target.reset();
