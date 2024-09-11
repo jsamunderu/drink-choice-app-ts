@@ -20,9 +20,9 @@ export default function Home() {
     const doc = { modelId: data[0].id, attributes: attr };
     createDrinkChoiceModel(doc);
 
-    //postDrinksModelAttributes(obj)
-      //.then((response: any) => router.push("/result"))
-      //.catch((error: any) => console.log("Error" + error));
+    postDrinksModelAttributes(obj)
+      .then((response: any) => router.push("/result"))
+      .catch((error: any) => console.log("Error" + error));
 
     event.target.reset();
     router.push("/results");
